@@ -18,7 +18,7 @@ public class StudentsRepository implements GenericDao<Student, Long> {
 
     @Override
     public void save(Student student) {
-        EntityManager manager = this.managerFactory.createEntityManager();
+        EntityManager manager = managerFactory.createEntityManager();
         EntityTransaction transaction = manager.getTransaction();
         try {
             transaction.begin();
@@ -50,7 +50,6 @@ public class StudentsRepository implements GenericDao<Student, Long> {
                     .setParameter("email", Objects.requireNonNull(email))
                     .getResultList().getFirst();
         }
-
     }
 
     @Override
@@ -63,7 +62,7 @@ public class StudentsRepository implements GenericDao<Student, Long> {
 
     @Override
     public Student update(Student student) {
-        EntityManager manager = managerFactory.createEntityManager();
+        EntityManager manager = this.managerFactory.createEntityManager();
         EntityTransaction transaction = manager.getTransaction();
         try {
             transaction.begin();
